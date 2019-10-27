@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'PatientController@showProfile')->name('profile');
+Route::get('/home/profile/patient', 'PatientController@showProfile')->name('patient-profile');
+Route::get('/home/profile/doctor', 'DoctorController@showProfile')->name('doctor-profile');
+Route::get('/home/doctors', 'DoctorController@showDoctors')->name('doctor-list');
 
 //Route::get('/', 'SampleController@index');
 

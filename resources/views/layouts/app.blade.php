@@ -36,7 +36,7 @@
                         @if(Auth::user()->hasRole('ROLE_PATIENT'))
                     <ul class="navbar-nav m-auto">
                         <li>
-                            <a href="">Lista lekarzy</a>
+                            <a href="{{ route('doctor-list') }}">Lista lekarzy</a>
                         </li>
                     </ul>
                     @endif
@@ -73,12 +73,18 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{route('profile')}}"
-{{--                                       onclick="event.preventDefault();--}}
-{{--                                                     document.getElementById('logout-form').submit();"--}}
-                                    >
+                                    @if(Auth::check())
+                                        @if(Auth::user()->hasRole('ROLE_PATIENT'))
+                                    <a class="dropdown-item" href="{{route('patient-profile')}}">
                                         {{ __('My Profile') }}
                                     </a>
+                                        @endif
+                                        @if(Auth::user()->hasRole('ROLE_DOCTOR'))
+                                                <a class="dropdown-item" href="{{route('doctor-profile')}}">
+                                                    {{ __('My Profile') }}
+                                                </a>
+                                            @endif
+                                    @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

@@ -18,10 +18,8 @@ class PatientProfile extends Model
         'name', 'surname', 'phone', 'locality', 'user_id'
     ];
 
-
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    //
 }
