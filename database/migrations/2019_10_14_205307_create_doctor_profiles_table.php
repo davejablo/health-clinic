@@ -18,7 +18,9 @@ class CreateDoctorProfilesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('surname');
-            $table->string('specialization')->nullable();
+            $table->integer('specialization_id')->unsigned()->nullable();
+            $table->foreign('specialization_id')
+            ->references('id')->on('doctor_specializations');
             $table->date('birthDate')->nullable();
             $table->unsignedSmallInteger('gender')->nullable();
             $table->string('phone',10)->unique();
@@ -30,6 +32,7 @@ class CreateDoctorProfilesTable extends Migration
             $table->timestamps();
 
             $table->index('user_id');
+            $table->index('specialization_id');
         });
     }
 

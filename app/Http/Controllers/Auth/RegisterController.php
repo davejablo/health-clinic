@@ -58,6 +58,8 @@ class RegisterController extends Controller
             'phone' => ['required', 'numeric', 'min:11'],
             'locality' => ['required', 'string', 'min:2', 'max:200'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'gender' => ['required', 'numeric'],
+            'birthDate' => ['required']
         ]);
     }
 
@@ -85,6 +87,8 @@ class RegisterController extends Controller
                     'surname' => $data['surname'],
                     'phone' => $data['phone'],
                     'locality' => $data['locality'],
+                    'birthDate' => $data['birthDate'],
+                    'gender' => $data['gender'],
                 ]);
                 break;
 
@@ -97,6 +101,8 @@ class RegisterController extends Controller
                     'surname' => $data['surname'],
                     'phone' => $data['phone'],
                     'locality' => $data['locality'],
+                    'birthDate' => $data['birthDate'],
+                    'gender' => $data['gender'],
                 ]);
             break;
 
