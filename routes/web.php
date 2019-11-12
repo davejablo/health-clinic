@@ -33,6 +33,14 @@ Route::get('/home/profile/patient/{patientId}/edit', 'PatientController@editPati
 //PatientProfile Update
 Route::patch('/home/profile/patient/{patientId}', 'PatientController@updatePatient')->name('patient-profile-update');
 
+//Appointment Form
+Route::get('/home/doctors/{doctorId}/appointment', 'AppointmentController@formAppointment')->name('appointment');
+
+//Appointment Create
+Route::post('/home/doctors/{doctorId}/appointment/create', 'AppointmentController@createAppointment')->name('appointment-create');
+
+
+
 
 //LoggedDoctorProfile
 Route::get('/home/profile/doctor', 'DoctorController@showProfile')->name('doctor-profile');

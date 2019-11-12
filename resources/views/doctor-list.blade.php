@@ -23,7 +23,7 @@
                                 <td>{{$doctorProfile->phone}}</td>
                                 <td>
                                     <a href="{{url('/home/doctors/'.$doctorProfile->id)}}" class="btn btn-outline-primary btn-sm">Profile</a>
-                                    <a href="" class="btn btn-success btn-sm">Appointment</a>
+                                    <a href="{{url('/home/doctors/'.$doctorProfile->id.'/appointment')}}" class="btn btn-success btn-sm">Appointment</a>
                                 </td>
                             </tr>
                             @endforeach

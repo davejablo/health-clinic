@@ -24,6 +24,14 @@ class PatientProfile extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function appointments(){
+        return $this->belongsToMany('App\Appointment', 'doctor_profile_patient_profile');
+    }
+
+    public function doctors(){
+        return $this->belongsToMany('App\DoctorProfile');
+    }
+
     public function getAge(){
         return $age = Carbon::parse($this->birthDate)->age;
     }

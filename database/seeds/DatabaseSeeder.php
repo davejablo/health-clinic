@@ -14,8 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RolesTableSeeder::class);
         $this->call(DoctorSpecializationSeeder::class);
+        $this->call(DoctorsSeeder::class);
+        $this->call(PatientSeeder::class);
 
         // $this->call(UsersTableSeeder::class);
         //        php artisan db:seed
+//        php artisan make:seeder UsersTableSeeder
     }
 }
