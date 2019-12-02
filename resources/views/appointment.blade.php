@@ -6,24 +6,28 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Appointment</div>
-                    <div class="card-body">
-                        <form action="/home/doctors/{{$doctorId}}/appointment/create" method="post">
+                    <h3>All data: {{$doctorId}}, {{$date}}, {{$hour}}</h3>
+                    <div class="card-body justify-content-center">
+                        <form action="/home/doctors/{{$doctorId ?? ''}}/appointment/create" method="POST">
                             @csrf
-                        <div class="form-group">
-                            <input class="form-control" type="hidden" id="doctorProfile_id" name="doctorProfile_id" value={{$doctorId}}>
-                            <input class="form-control" type="hidden" id="patientProfile_id" name="patientProfile_id" value={{Auth::user()->patientProfile->id}}>
+                            <input type="hidden" value="{{$doctorId}}" name="doctor_profile_id">
+                            <input type="hidden" value="{{Auth::user()->patientProfile->id}}" name="patient_profile_id">
+                            <input type="hidden" value="{{$date}}" name="appointment_date">
+                            <input type="hidden" value="{{$hour}}" name="appointment_time">
                             <label for="symptom" type="text">Actual symptoms</label>
-                            <textarea class="form-control" id="symptom" name="symptom" rows="3" required></textarea>
-                        </div>
-                            <div class="form-group row mb-0">
+                            <textarea class="form-control" id="symptom" name="symptom" rows="4" required></textarea>
+                            <div class="form-group row m-2">
                                 <div class="col-md-6 offset-md-4">
                                     <button class="btn btn-warning" type="submit">Sign In</button>
                                 </div>
                             </div>
-                    </form>
+                        </form>
+                        <div class="container">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection

@@ -24,12 +24,22 @@ class PatientProfile extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function checkAppointments($doctorId, $patientProfileId, $selectedDate ){
+        $object = Appointment::all()
+            ->where('patient_profile_id', $patientProfileId)
+            ->where('doctor_profile_id', $doctorId)
+            ->where('appointment_date', $selectedDate->toDateString())
+            ->where('is_closed', 0)
+            ->first();
+        return $object;
+    }
+
     public function appointments(){
-        return $this->belongsToMany('App\Appointment', 'doctor_profile_patient_profile');
+        return $this->belongsToMany('App\Appointment', 'appointments', 'patient_profile_id', 'appointment_id');
     }
 
     public function doctors(){
-        return $this->belongsToMany('App\DoctorProfile');
+        return $this->belongsToMany('App\DoctorProfile', 'appointments', 'patient_profile_id', 'doctor_profile_id');
     }
 
     public function getAge(){

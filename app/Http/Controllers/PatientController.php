@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Appointment;
 use App\DoctorProfile;
 use App\PatientProfile;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 
 class PatientController extends Controller
@@ -32,11 +33,9 @@ class PatientController extends Controller
 
     public function editPatient($patientId){
         $patientProfile = PatientProfile::findOrFail($patientId);
-        $doctors = $patientProfile->doctors;
-//        $appointments = $patientProfile->appointments($patientId);
-//        $appointments = Appointment::where('patientProfile_id', $patientId)->get();
+//        $appointments = $patientProfile->appointments;
+        $appointments = Appointment::where('patient_profile_id', $patientId)->get();
 //        dd($appointments);
-        dd($doctors);
 
         return view('profiles.patient-profile-edit', compact('patientProfile'));
     }

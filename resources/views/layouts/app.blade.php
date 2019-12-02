@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
 {{--    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">--}}
 </head>
 <body>
@@ -101,14 +102,26 @@
             @yield('content')
         </main>
     </div>
-<footer>
-{{--    <script src="//code.jquery.com/jquery-1.10.2.js"></script>--}}
-{{--    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>--}}
-{{--    <script>--}}
-{{--        $(function() {--}}
-{{--            $( "#datepicker" ).datepicker();--}}
-{{--        });--}}
-{{--    </script>--}}
-</footer>
+
+    <footer>
+        <div class="container">
+            GÓWNO
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <script>
+        console.log('!!!!!!!!!!!!')
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var doc_id = button.data('docid')
+            var modal = $(this)
+            modal.find('.modal-body #doc_id').val(doc_id)
+            // modal.find('.modal-body input').val(doc_id)
+        })
+    </script>
 </body>
+
 </html>

@@ -29,12 +29,23 @@ class DoctorProfile extends Model
         return $this->belongsTo(DoctorSpecialization::class);
     }
 
-    public function appointments(){
-        return $this->belongsToMany('App\Appointment', 'doctor_profile_patient_profile');
+    public function plans()
+    {
+        return $this->hasMany('App\DoctorDayOfWeekPlan');
     }
 
+    public function getDayPlan($selectedDate){
+        $dayNumber = $selectedDate->dayOfWeek;
+        return $this->plans()->where('day_of_week', $dayNumber)
+            ->first();
+    }
+
+//    public function appointments(){
+//        return $this->belongsToMany('App\Appointment', 'appointments');
+//    }
+
     public function patients(){
-        return $this->belongsToMany('App\PatientProfile');
+        return $this->belongsToMany('App\PatientProfile', 'appointments', 'doctor_profile_id', 'patient_profile_id');
     }
 
     public function getAge(){
@@ -44,4 +55,8 @@ class DoctorProfile extends Model
     public function getBirthDate(){
         return $birthDate = Carbon::parse($this->birthDate)->format('d/m/Y');
     }
+
+
+
+
 }

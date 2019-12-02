@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Appointment;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -13,18 +14,36 @@ class AppointmentController extends Controller
         $this->middleware('auth');
     }
 
-    public function formAppointment($doctorId){
-        return view('appointment', compact('doctorId'));
+    public function selectDate($doctorId){
+        return view('select-date', compact('doctorId'));
+    }
+
+    public function formAppointment($doctorId)
+    {
+        $data = request()->validate([
+            'doctorId' => '',
+            'date' => '',
+            'hour' => ''
+        ]);
+
+//        dd($data);
+
+        $date = $data['date'];
+        $hour = $data['hour'];
+
+        return view('appointment', compact('doctorId', 'date', 'hour'));
     }
 
     public function createAppointment(){
         $data = request()->validate([
+            'doctor_profile_id' => 'required',
+            'patient_profile_id' => 'required',
+            'appointment_date' => 'required|date|after_or_equal:today',
+            'appointment_time' => 'required',
             'symptom' => 'required',
-            'doctorProfile_id' => '',
-            'patientProfile_id' => '',
         ]);
 
-        \App\Appointment::create($data);
+        Appointment::create($data);
 
         return redirect(route('doctor-list'));
     }

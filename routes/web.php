@@ -33,12 +33,17 @@ Route::get('/home/profile/patient/{patientId}/edit', 'PatientController@editPati
 //PatientProfile Update
 Route::patch('/home/profile/patient/{patientId}', 'PatientController@updatePatient')->name('patient-profile-update');
 
+//Appointment Check Date
+Route::get('/home/doctors/{doctorId}/date', 'AppointmentController@selectDate')->name('appointment');
+
+//DoctorProfile GetDayOfWeekPlan
+Route::get('/home/doctors/{doctorId}/date/plan', 'DoctorController@showPlan')->name('doctor-profile-plan');
+
 //Appointment Form
-Route::get('/home/doctors/{doctorId}/appointment', 'AppointmentController@formAppointment')->name('appointment');
+Route::get('/home/doctors/{doctorId}/appointment', 'AppointmentController@formAppointment')->name('appointment-form');
 
 //Appointment Create
 Route::post('/home/doctors/{doctorId}/appointment/create', 'AppointmentController@createAppointment')->name('appointment-create');
-
 
 
 
@@ -56,6 +61,9 @@ Route::get('/home/profile/doctor/{doctorId}/edit', 'DoctorController@editDoctor'
 
 //DoctorProfile Update
 Route::patch('/home/profile/doctor/{doctorId}', 'DoctorController@updateDoctor')->name('doctor-profile-update');
+
+
+
 
 
 //Route::get('/', 'SampleController@index');

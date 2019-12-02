@@ -14,7 +14,7 @@ class CreateAppointmentsTable extends Migration
     public function up()
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('appointment_id');
 
             $table->integer('patient_profile_id')->unsigned();
             $table->integer('doctor_profile_id')->unsigned();
@@ -23,7 +23,9 @@ class CreateAppointmentsTable extends Migration
             $table->foreign('doctor_profile_id')->references('id')->on('doctor_profiles');
 
             $table->string('symptom');
-            $table->boolean('is_closed')->nullable();
+            $table->boolean('is_closed')->default(false);
+            $table->date('appointment_date');
+            $table->time('appointment_time');
 
             $table->timestamps();
         });
