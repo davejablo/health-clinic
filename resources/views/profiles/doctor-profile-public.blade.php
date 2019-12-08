@@ -12,7 +12,7 @@
                         <h1>Surname:{{$doctorProfile->surname}}</h1>
                         <h1>E-mail: {{$doctorProfile->user->email ?? 'None'}}</h1>
                         <h1>BirthDate:{{$doctorProfile->getBirthDate()}}</h1>
-                        <h1>Specialization:{{$doctorProfile->specialization_id ?? 'None'}}</h1>
+                        <h1>Specialization:{{$doctorProfile->doctorSpecialization->name ?? 'None'}}</h1>
                     @switch($doctorProfile->gender)
                             @case(1)
                             <h1>Gender: Male</h1>

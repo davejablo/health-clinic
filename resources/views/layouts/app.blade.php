@@ -47,6 +47,9 @@
                                 <li>
                                     <a href="{{route('patient-list')}}">Lista pacjentów</a>
                                 </li>
+                                <li>
+                                    <a href="{{route('doctor-appointments')}}">Wizyty</a>
+                                </li>
                             </ul>
                         @endif
                 @endif
@@ -104,8 +107,9 @@
     </div>
 
     <footer>
+        FOOTER
         <div class="container">
-            GÓWNO
+            FOOTER
         </div>
     </footer>
 

@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 
 
 use App\Appointment;
+use App\Disease;
+use App\DoctorProfile;
+use App\Medicine;
+use App\PatientProfile;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class AppointmentController extends Controller
 {
@@ -15,7 +20,19 @@ class AppointmentController extends Controller
     }
 
     public function selectDate($doctorId){
-        return view('select-date', compact('doctorId'));
+
+        $doctor = DoctorProfile::find($doctorId);
+        $doctorPlans = $doctor->plans;
+        $weekMap = [
+            0 => 'Niedziela',
+            1 => 'Poniedziałek',
+            2 => 'Wtorek',
+            3 => 'Środa',
+            4 => 'Czwartek',
+            5 => 'Piątek',
+            6 => 'Sobota',
+        ];
+        return view('select-date', compact('doctorId', 'doctorPlans', 'weekMap'));
     }
 
     public function formAppointment($doctorId)
@@ -44,8 +61,19 @@ class AppointmentController extends Controller
         ]);
 
         Appointment::create($data);
+        return Redirect::route('doctor-list')->with('message', 'Your appointment is succesfully scheduled on '.Carbon::parse($data['appointment_date'])->format('d-m-Y').' at '.$data['appointment_time']);
+    }
 
-        return redirect(route('doctor-list'));
+    public function showAppointmentDetail($appointment_id){
+        $appointment = Appointment::all()
+            ->where('id', $appointment_id)->first();
+
+        $patientProfile = PatientProfile::findOrFail($appointment->patient_profile_id);
+
+        $diseases  = Disease::all();
+        $medicines = Medicine::all();
+
+        return view('appointment-detail', compact('appointment', 'patientProfile', 'diseases', 'medicines'));
     }
 
 }

@@ -20,6 +20,6 @@ class DoctorSpecialization extends Model
 
     public function doctorProfiles()
     {
-        return $this->hasMany('App\DoctorProfile');
+        return $this->hasMany(DoctorProfile::class);
     }
 }

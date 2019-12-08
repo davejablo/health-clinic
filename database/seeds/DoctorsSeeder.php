@@ -34,7 +34,7 @@ class DoctorsSeeder extends Seeder
             'phone' => '102837',
             'locality' => 'Warszawa',
             'gender' => rand(0, 2),
-            'specialization_id' => rand(1, 9)
+            'doctor_specialization_id' => rand(1, 9)
         ]);
 
         $user2 = User::create([
@@ -52,7 +52,7 @@ class DoctorsSeeder extends Seeder
             'phone' => '0328745',
             'locality' => 'Katowice',
             'gender' => rand(0, 2),
-            'specialization_id' => rand(1, 9)
+            'doctor_specialization_id' => rand(1, 9)
         ]);
 
         $user3 = User::create([
@@ -70,7 +70,7 @@ class DoctorsSeeder extends Seeder
             'phone' => '129348',
             'locality' => 'Częstochowa',
             'gender' => rand(0, 2),
-            'specialization_id' => rand(1, 9)
+            'doctor_specialization_id' => rand(1, 9)
         ]);
 
         $user4 = User::create([
@@ -88,7 +88,7 @@ class DoctorsSeeder extends Seeder
             'phone' => '12394',
             'locality' => 'Toruń',
             'gender' => rand(0, 2),
-            'specialization_id' => rand(1, 9)
+            'doctor_specialization_id' => rand(1, 9)
         ]);
 
         $user5 = User::create([
@@ -106,7 +106,7 @@ class DoctorsSeeder extends Seeder
             'phone' => '12345',
             'locality' => 'Częstochowa',
             'gender' => rand(0, 2),
-            'specialization_id' => rand(1, 9)
+            'doctor_specialization_id' => rand(1, 9)
         ]);
 
         $user6 = User::create([
@@ -124,7 +124,7 @@ class DoctorsSeeder extends Seeder
             'phone' => '10293',
             'locality' => 'Częstochowa',
             'gender' => rand(0, 2),
-            'specialization_id' => rand(1, 9)
+            'doctor_specialization_id' => rand(1, 9)
         ]);
 
         $user7 = User::create([
@@ -142,7 +142,7 @@ class DoctorsSeeder extends Seeder
             'phone' => '732930',
             'locality' => 'Częstochowa',
             'gender' => rand(0, 2),
-            'specialization_id' => rand(1, 9)
+            'doctor_specialization_id' => rand(1, 9)
         ]);
     }
 }

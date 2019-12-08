@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Appointment;
+use App\Disease;
 use App\DoctorProfile;
 use App\DoctorSpecialization;
 use Carbon\Carbon;
@@ -28,8 +29,7 @@ class DoctorController extends Controller
         return view('doctor-list', compact('doctorProfiles'));
     }
 
-    public function showDoctor($doctorId){
-        $doctorProfile = DoctorProfile::findOrFail($doctorId);
+    public function showDoctor(DoctorProfile $doctorProfile){
         return view('profiles.doctor-profile-public', compact('doctorProfile'));
     }
 
@@ -91,5 +91,15 @@ class DoctorController extends Controller
         }
 
         return view('terms', compact('dayPlan','selectedDate', 'doctorId', 'busyHours', 'dayHours'));
+    }
+
+    public function showDoctorOpenedAppointments(){
+
+        $doctorProfile = Auth::user()->doctorProfile;
+        $myAppointments = $doctorProfile->getDoctorOpenedAppointments($doctorProfile->id);
+
+//        dd($myAppointments);
+
+        return view('appointment-list', compact('myAppointments'));
     }
 }

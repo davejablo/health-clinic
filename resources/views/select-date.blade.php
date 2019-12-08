@@ -13,7 +13,17 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Appointment</div>
+
                     <div class="card-body justify-content-center">
+                        @if($doctorPlans->count())
+                        @foreach($doctorPlans as $doctorPlan)
+                            <h2>{{$weekMap[$doctorPlan->day_of_week] }} from {{\Carbon\Carbon::createFromTimeString($doctorPlan->from_hour)->format('H:i')}} to {{\Carbon\Carbon::createFromTimeString($doctorPlan->to_hour)->format('H:i')}}</h2>
+                        @endforeach
+                        @else
+                            <div class="alert alert-warning" role="alert">
+                                <h3>Doctor has no terms scheduled</h3>
+                            </div>
+                            @endif
                         <form action="/home/doctors/{{$doctorId ?? ''}}/date/plan" method="GET">
                             @csrf
                         <div class="form-group text-center">

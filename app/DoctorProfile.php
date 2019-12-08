@@ -5,6 +5,8 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorProfile extends Model
 {
@@ -40,6 +42,18 @@ class DoctorProfile extends Model
             ->first();
     }
 
+    public function  getDoctorOpenedAppointments($id){
+        return Appointment::all()
+            ->where('doctor_profile_id', $id)
+            ->where('is_closed', false);
+    }
+
+    public function  getDoctorClosedAppointments($id){
+        return Appointment::all()
+            ->where('doctor_profile_id', $id)
+            ->where('is_closed', true);
+    }
+
 //    public function appointments(){
 //        return $this->belongsToMany('App\Appointment', 'appointments');
 //    }
@@ -55,8 +69,5 @@ class DoctorProfile extends Model
     public function getBirthDate(){
         return $birthDate = Carbon::parse($this->birthDate)->format('d/m/Y');
     }
-
-
-
 
 }

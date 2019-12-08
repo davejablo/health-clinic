@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DoctorSpecializationSeeder::class);
         $this->call(DoctorsSeeder::class);
         $this->call(PatientSeeder::class);
+        $this->call(DiseaseSeeder::class);
+        $this->call(MedicineSeeder::class);
+        $this->call(DoctorDayOfWeekPlanSeeder::class);
 
         // $this->call(UsersTableSeeder::class);
         //        php artisan db:seed

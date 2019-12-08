@@ -26,15 +26,14 @@ class PatientController extends Controller
         return view('patient-list', compact('patientProfiles'));
     }
 
-    public function showPatient($patientId){
-        $patientProfile = PatientProfile::findOrFail($patientId);
+    public function showPatient(PatientProfile $patientProfile){
         return view('profiles.patient-profile-public', compact('patientProfile'));
     }
 
-    public function editPatient($patientId){
-        $patientProfile = PatientProfile::findOrFail($patientId);
+    public function editPatient(PatientProfile $patientProfile){
+//        $patientProfile = PatientProfile::findOrFail($patientId);
 //        $appointments = $patientProfile->appointments;
-        $appointments = Appointment::where('patient_profile_id', $patientId)->get();
+//        $appointments = Appointment::where('patient_profile_id', $patientId)->get();
 //        dd($appointments);
 
         return view('profiles.patient-profile-edit', compact('patientProfile'));

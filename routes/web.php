@@ -25,7 +25,7 @@ Route::get('/home/profile/patient', 'PatientController@showProfile')->name('pati
 Route::get('/home/patients', 'PatientController@showPatients')->name('patient-list');
 
 //PatientProfile Public Show
-Route::get('/home/patients/{patientId}', 'PatientController@showPatient')->name('patient-profile-public');
+Route::get('/home/patients/{patientProfile}', 'PatientController@showPatient')->name('patient-profile-public');
 
 //PatientProfile Edit View
 Route::get('/home/profile/patient/{patientId}/edit', 'PatientController@editPatient')->name('patient-profile-edit');
@@ -47,6 +47,7 @@ Route::post('/home/doctors/{doctorId}/appointment/create', 'AppointmentControlle
 
 
 
+
 //LoggedDoctorProfile
 Route::get('/home/profile/doctor', 'DoctorController@showProfile')->name('doctor-profile');
 
@@ -54,13 +55,21 @@ Route::get('/home/profile/doctor', 'DoctorController@showProfile')->name('doctor
 Route::get('/home/doctors', 'DoctorController@showDoctors')->name('doctor-list');
 
 //DoctorProfile Public Show
-Route::get('/home/doctors/{doctorId}', 'DoctorController@showDoctor')->name('doctor-profile-public');
+Route::get('/home/doctors/{doctorProfile}', 'DoctorController@showDoctor')->name('doctor-profile-public');
 
 //DoctorProfile Edit View
 Route::get('/home/profile/doctor/{doctorId}/edit', 'DoctorController@editDoctor')->name('doctor-profile-edit');
 
+//Doctor Open Appointments
+Route::get('/home/profile/doctor/appointments', 'DoctorController@showDoctorOpenedAppointments')->name('doctor-appointments');
+
 //DoctorProfile Update
 Route::patch('/home/profile/doctor/{doctorId}', 'DoctorController@updateDoctor')->name('doctor-profile-update');
+
+Route::get('/home/profile/doctor/appointments/{appointment_id}', 'AppointmentController@showAppointmentDetail')->name('appointment-detail');
+
+//Prescription
+Route::post('/home/profile/doctor/appointments/{appointmentId}/prescription', 'PrescriptionController@createPrescription')->name('prescription-create');
 
 
 
