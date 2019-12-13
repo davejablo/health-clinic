@@ -24,6 +24,7 @@ class CreateDoctorProfilesTable extends Migration
             $table->string('phone',10)->unique();
             $table->string('locality');
             $table->string('street')->nullable();
+            $table->string('image')->nullable();
             $table->decimal('ratingScore')->nullable();
             $table->decimal('ratingTotal')->nullable();
             $table->integer('ratingCounter')->nullable();

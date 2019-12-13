@@ -11,6 +11,7 @@ use http\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\Console\Input\Input;
 
 class DoctorController extends Controller
@@ -50,8 +51,22 @@ class DoctorController extends Controller
             'phone'=> '',
             'gender'=> '',
             'birthDate'=> '',
+            'image' => '',
         ]);
-        auth()->user()->doctorProfile->update($data);
+
+        if (request('image')){
+            $imagePath = request('image')->store('uploads/doctor-profiles', 'public');
+
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();
+
+            $imageArray = ['image' => $imagePath];
+        }
+
+        auth()->user()->doctorProfile->update(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
 
         return redirect('home/profile/doctor');
     }

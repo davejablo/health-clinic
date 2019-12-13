@@ -28,10 +28,10 @@ Route::get('/home/patients', 'PatientController@showPatients')->name('patient-li
 Route::get('/home/patients/{patientProfile}', 'PatientController@showPatient')->name('patient-profile-public');
 
 //PatientProfile Edit View
-Route::get('/home/profile/patient/{patientId}/edit', 'PatientController@editPatient')->name('patient-profile-edit');
+Route::get('/home/profile/patient/{patientProfile}/edit', 'PatientController@editPatient')->name('patient-profile-edit');
 
 //PatientProfile Update
-Route::patch('/home/profile/patient/{patientId}', 'PatientController@updatePatient')->name('patient-profile-update');
+Route::patch('/home/profile/patient/{patientProfile}', 'PatientController@updatePatient')->name('patient-profile-update');
 
 //Appointment Check Date
 Route::get('/home/doctors/{doctorId}/date', 'AppointmentController@selectDate')->name('appointment');

@@ -18,8 +18,13 @@ class DoctorProfile extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'surname', 'phone', 'locality', 'user_id', 'gender', 'birthDate', 'specialization_id', 'street'
+        'name', 'surname', 'phone', 'locality', 'user_id', 'gender', 'birthDate', 'specialization_id', 'street', 'image'
     ];
+
+    public function profileImage(){
+        $imagePath = ($this->image) ? $this->image : 'uploads/profile_placeholder.jpg';
+        return '/storage/'. $imagePath;
+    }
 
     public function user()
     {

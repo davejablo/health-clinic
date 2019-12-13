@@ -7,7 +7,12 @@
                 <div class="card">
                     <div class="card-header">My profile</div>
                     <div class="card-body">
-                        Profile Details
+                        <div class="text-center text-info">
+                            <h1>Profile Details</h1>
+                        </div>
+
+                            <img src="{{Auth::user()->patientProfile->profileImage()}}" class="rounded w-25 img-thumbnail float-left" alt="">
+
                         <h1>Name: {{Auth::user()->patientProfile->name}}</h1>
                         <h1>Surname: {{Auth::user()->patientProfile->surname}}</h1>
                         <h1>BirthDate: {{Auth::user()->patientProfile->getBirthDate() }}</h1>

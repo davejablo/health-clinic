@@ -24,6 +24,7 @@ class CreatePatientProfilesTable extends Migration
             $table->string('phone',10)->unique();
             $table->string('locality');
             $table->string('street')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->index('user_id');

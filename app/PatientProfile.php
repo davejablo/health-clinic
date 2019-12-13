@@ -16,8 +16,10 @@ class PatientProfile extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'surname', 'phone', 'locality', 'user_id', 'gender', 'birthDate', 'pesel', 'street'
+        'name', 'surname', 'phone', 'locality', 'user_id', 'gender', 'birthDate', 'pesel', 'street', 'image'
     ];
+
+
 
     public function user()
     {
@@ -32,6 +34,11 @@ class PatientProfile extends Model
             ->where('is_closed', 0)
             ->first();
         return $object;
+    }
+
+    public function profileImage(){
+        $imagePath = ($this->image) ? $this->image : 'uploads/profile_placeholder.jpg';
+        return '/storage/'. $imagePath;
     }
 
     public function appointments(){

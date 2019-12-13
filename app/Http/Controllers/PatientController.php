@@ -7,8 +7,10 @@ namespace App\Http\Controllers;
 use App\Appointment;
 use App\DoctorProfile;
 use App\PatientProfile;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
+use Intervention\Image\Facades\Image;
 
 class PatientController extends Controller
 {
@@ -41,17 +43,30 @@ class PatientController extends Controller
 
     public function updatePatient(){
         $data = request()->validate([
-            'name' => '',
-            'surname'=> '',
-            'email'=> '',
+            'name' => 'required',
+            'surname'=> 'required',
+            'phone'=> '',
             'pesel'=> '',
             'locality'=> '',
             'street'=> '',
-            'phone'=> '',
-            'gender'=> '',
-            'birthDate'=> '',
+            'gender'=> 'required',
+            'birthDate'=> 'required',
+            'image' => '',
         ]);
-        auth()->user()->patientProfile->update($data);
+
+        if (request('image')){
+            $imagePath = request('image')->store('uploads/patient-profiles', 'public');
+
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();
+
+            $imageArray = ['image' => $imagePath];
+        }
+
+        auth()->user()->patientProfile->update(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
 
         return redirect('home/profile/patient');
     }

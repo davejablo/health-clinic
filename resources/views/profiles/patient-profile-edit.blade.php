@@ -5,9 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Edit profile</div>
                     <div class="card-body">
-                        <form action="/home/profile/patient/{{$patientProfile->id}}" enctype="" method="POST">
+                        Edit {{$patientProfile->user->name}} Profile
+                        <form action="/home/profile/patient/{{$patientProfile->id}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PATCH')
                             <h1>{{$patientProfile->name}}</h1>
@@ -15,7 +15,7 @@
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name') ?? $patientProfile->name}}" autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name') ?? $patientProfile->name}}" autocomplete="name">
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -113,10 +113,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Profile Image') }}</label>
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email') ?? $patientProfile->user->email}}" autocomplete="email">
-                                    @error('email')
+                                    <input  type="file" class="form-control-file @error('image') is-invalid @enderror" id="image" name="image">
+                                    @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -129,6 +129,7 @@
                                     <button class="btn btn-success">Save Profile</button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
