@@ -19,7 +19,7 @@
                         <tr>
                             <th scope="row">{{$patientProfile->id}}</th>
                             <td>{{$patientProfile->name.' '. $patientProfile->surname}}</td>
-                            <td>{{$patientProfile->user->email}}</td>
+{{--                            <td>{{$patientProfile->user->email}}</td>--}}
                             <td>{{$patientProfile->phone}}</td>
                             <td>
                                 <a href="{{url('/home/patients/'.$patientProfile->id)}}" class="btn btn-outline-primary btn-sm">Profile</a>

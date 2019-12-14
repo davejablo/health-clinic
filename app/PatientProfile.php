@@ -19,8 +19,6 @@ class PatientProfile extends Model
         'name', 'surname', 'phone', 'locality', 'user_id', 'gender', 'birthDate', 'pesel', 'street', 'image'
     ];
 
-
-
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -35,6 +33,21 @@ class PatientProfile extends Model
             ->first();
         return $object;
     }
+
+    public function  getPatientOpenedAppointments($id){
+        $openedAppointments = Appointment::where('patient_profile_id', $id)
+            ->where('is_closed', false)
+            ->paginate(5);
+        return $openedAppointments;
+    }
+
+    public function  getPatientClosedAppointments($id){
+        $closedAppointments = Appointment::where('patient_profile_id', $id)
+            ->where('is_closed', true)
+            ->paginate(5);
+        return $closedAppointments;
+    }
+
 
     public function profileImage(){
         $imagePath = ($this->image) ? $this->image : 'uploads/profile_placeholder.jpg';

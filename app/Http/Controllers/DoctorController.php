@@ -30,6 +30,12 @@ class DoctorController extends Controller
         return view('doctor-list', compact('doctorProfiles'));
     }
 
+    public function showDoctorClosedAppointments(){
+        $doctorProfile = Auth::user()->doctorProfile;
+        $closedAppointments = Auth::user()->doctorProfile->getDoctorClosedAppointments($doctorProfile->id);
+        return view('appointment-list', compact('closedAppointments'));
+    }
+
     public function showDoctorsSpecialization($specialization_id){
         $doctorProfiles = DoctorProfile::where('doctor_specialization_id', $specialization_id)->paginate(1);
         if ($doctorProfiles->isEmpty())

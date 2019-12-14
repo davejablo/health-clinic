@@ -32,7 +32,14 @@
                         <h1>Phone: {{Auth::user()->patientProfile->phone}}</h1>
                         <h1>Locality: {{Auth::user()->patientProfile->locality}}</h1>
                         <h1>Address: {{Auth::user()->patientProfile->street ?? 'None'}}</h1>
-                        <a class="btn btn-success" href="/home/profile/patient/{{Auth::user()->patientProfile->id}}/edit">Edit profile</a>
+                        <div class="row justify-content-center m-2 pb-3 pt-3">
+                            <div class="justify-content-center">
+                                <a class="btn btn-success m-2" href="/home/profile/patient/{{Auth::user()->patientProfile->id}}/edit">Edit profile</a>
+                                <a class="btn btn-danger m-2" href="{{route('patient-appointments-closed')}}">Show closed appointments</a>
+                                <a class="btn btn-primary m-2" href="{{route('patient-appointments-opened')}}">Show opened appointments</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

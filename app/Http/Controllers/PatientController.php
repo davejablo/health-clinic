@@ -10,6 +10,7 @@ use App\PatientProfile;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 class PatientController extends Controller
@@ -71,5 +72,15 @@ class PatientController extends Controller
         return redirect('home/profile/patient');
     }
 
+    public function showPatientClosedAppointments(){
+        $patientProfile = Auth::user()->patientProfile;
+        $closedAppointments = Auth::user()->patientProfile->getPatientClosedAppointments($patientProfile->id);
+        return view('appointment-list', compact('closedAppointments'));
+    }
 
+    public function showPatientOpenedAppointments(){
+        $patientProfile = Auth::user()->patientProfile;
+        $openedAppointments = Auth::user()->patientProfile->getPatientOpenedAppointments($patientProfile->id);
+        return view('appointment-list-opened', compact('openedAppointments'));
+    }
 }

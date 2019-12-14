@@ -21,7 +21,6 @@ class PrescriptionController extends Controller
             'description' => 'required',
             'appointment_id' => 'required'
         ]);
-
         dd($data);
 
         $appointment = Appointment::all()

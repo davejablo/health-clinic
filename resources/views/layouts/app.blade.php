@@ -15,10 +15,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-{{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
+    {{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
 {{--    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">--}}
 </head>
 <body>
@@ -46,9 +46,6 @@
                             <ul class="navbar-nav m-auto">
                                 <li>
                                     <a href="{{route('patient-list')}}">Lista pacjentów</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('doctor-appointments')}}">Wizyty</a>
                                 </li>
                             </ul>
                         @endif
@@ -113,18 +110,14 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+{{--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-    <script>
-        console.log('!!!!!!!!!!!!')
-        $('#exampleModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            var doc_id = button.data('docid')
-            var modal = $(this)
-            modal.find('.modal-body #doc_id').val(doc_id)
-            // modal.find('.modal-body input').val(doc_id)
-        })
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#medicines').select2();
+        });
     </script>
 </body>
 

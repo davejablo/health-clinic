@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DoctorSpecialization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,8 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $specializations = DoctorSpecialization::all();
-        return view('home', compact('specializations'));
+        if (Auth::user()->hasRole('ROLE_DOCTOR'))
+        {
+            $doctorProfile = Auth::user()->doctorProfile;
+            $myAppointments = Auth::user()->doctorProfile->getDoctorOpenedAppointments($doctorProfile->id);
+            return view('home', compact('myAppointments'));
+        }
+        return view('home');
     }
 
 
