@@ -35,13 +35,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     @if(Auth::check())
-                        @if(Auth::user()->hasRole('ROLE_PATIENT'))
-                    <ul class="navbar-nav m-auto">
-                        <li>
-                            <a href="{{ route('doctor-list') }}">Lista lekarzy</a>
-                        </li>
-                    </ul>
-                    @endif
+{{--                        @if(Auth::user()->hasRole('ROLE_PATIENT'))--}}
+{{--                    <ul class="navbar-nav m-auto">--}}
+{{--                        <li>--}}
+{{--                            <a href="{{ route('doctor-list') }}">Lista lekarzy</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                    @endif--}}
                         @if(Auth::user()->hasRole('ROLE_DOCTOR'))
                             <ul class="navbar-nav m-auto">
                                 <li>

@@ -54,6 +54,9 @@ Route::get('/home/profile/doctor', 'DoctorController@showProfile')->name('doctor
 //DoctorProfiles List
 Route::get('/home/doctors', 'DoctorController@showDoctors')->name('doctor-list');
 
+//DoctorProfiles List
+Route::get('/home/doctors/specialization/{specialization_id}', 'DoctorController@showDoctorsSpecialization')->name('doctor-list-specialization');
+
 //DoctorProfile Public Show
 Route::get('/home/doctors/{doctorProfile}', 'DoctorController@showDoctor')->name('doctor-profile-public');
 

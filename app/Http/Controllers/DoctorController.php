@@ -26,7 +26,15 @@ class DoctorController extends Controller
     }
 
     public function showDoctors(){
-        $doctorProfiles = DoctorProfile::all();
+            $doctorProfiles = DoctorProfile::paginate(3);
+        return view('doctor-list', compact('doctorProfiles'));
+    }
+
+    public function showDoctorsSpecialization($specialization_id){
+        $doctorProfiles = DoctorProfile::where('doctor_specialization_id', $specialization_id)->paginate(1);
+        if ($doctorProfiles->isEmpty())
+            return Redirect::back()->with('message', 'There are no doctors with this specialization');
+        else
         return view('doctor-list', compact('doctorProfiles'));
     }
 
