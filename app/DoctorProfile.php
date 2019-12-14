@@ -48,15 +48,17 @@ class DoctorProfile extends Model
     }
 
     public function  getDoctorOpenedAppointments($id){
-        return Appointment::all()
-            ->where('doctor_profile_id', $id)
-            ->where('is_closed', false);
+        $openedAppointments = Appointment::where('doctor_profile_id', $id)
+            ->where('is_closed', false)
+            ->paginate(5);
+        return $openedAppointments;
     }
 
     public function  getDoctorClosedAppointments($id){
-        return Appointment::all()
-            ->where('doctor_profile_id', $id)
-            ->where('is_closed', true);
+        $closedAppointments = Appointment::where('doctor_profile_id', $id)
+            ->where('is_closed', true)
+            ->paginate(5);
+        return $closedAppointments;
     }
 
 //    public function appointments(){

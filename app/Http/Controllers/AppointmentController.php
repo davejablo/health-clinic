@@ -10,6 +10,7 @@ use App\DoctorProfile;
 use App\Medicine;
 use App\PatientProfile;
 use Carbon\Carbon;
+use Facade\FlareClient\Http\Exceptions\NotFound;
 use Illuminate\Support\Facades\Redirect;
 
 class AppointmentController extends Controller
@@ -67,13 +68,29 @@ class AppointmentController extends Controller
     public function showAppointmentDetail($appointment_id){
         $appointment = Appointment::all()
             ->where('id', $appointment_id)->first();
-
+        if ($appointment){
         $patientProfile = PatientProfile::findOrFail($appointment->patient_profile_id);
+        if (!$appointment->is_closed)
+        {
+            $diseases  = Disease::all();
+            $medicines = Medicine::all();
 
-        $diseases  = Disease::all();
-        $medicines = Medicine::all();
+            return view('appointment-detail', compact('appointment', 'patientProfile', 'diseases', 'medicines'));
+        }
+        else
+            $doctorProfile = DoctorProfile::findOrFail($appointment->doctor_profile_id);
+            $disease = $appointment->disease;
+            $prescription = $appointment->prescription;
+            $medicines = $prescription->medicines;
+            $totalPrice = 0;
+            foreach ($medicines as $medicine){
+                $totalPrice += $medicine->price;
+            }
 
-        return view('appointment-detail', compact('appointment', 'patientProfile', 'diseases', 'medicines'));
+//        dd($disease, $prescription, $medicines);
+        return view('appointment-closed-detail', compact('appointment','patientProfile', 'doctorProfile', 'disease', 'prescription', 'medicines', 'totalPrice'));
+        }
+        return Redirect::back()->with('message', 'This appointment does not exist in current list');
     }
 
 }

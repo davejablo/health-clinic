@@ -45,6 +45,13 @@ Route::get('/home/doctors/{doctorId}/appointment', 'AppointmentController@formAp
 //Appointment Create
 Route::post('/home/doctors/{doctorId}/appointment/create', 'AppointmentController@createAppointment')->name('appointment-create');
 
+//Patient Open Appointments
+Route::get('/home/profile/patient/appointments', 'PatientController@showPatientOpenedAppointments')->name('patient-appointments-opened');
+
+Route::get('/home/profile/patient/appointments/{appointment_id}', 'AppointmentController@showAppointmentDetail')->name('patient-appointments');
+
+//Patient Closed Appointments
+Route::get('/home/profile/patient/appointments-closed', 'PatientController@showPatientClosedAppointments')->name('patient-appointments-closed');
 
 
 
@@ -64,7 +71,7 @@ Route::get('/home/doctors/{doctorProfile}', 'DoctorController@showDoctor')->name
 Route::get('/home/profile/doctor/{doctorId}/edit', 'DoctorController@editDoctor')->name('doctor-profile-edit');
 
 //Doctor Open Appointments
-Route::get('/home/profile/doctor/appointments', 'DoctorController@showDoctorOpenedAppointments')->name('doctor-appointments');
+Route::get('/home/profile/doctor/appointments', 'DoctorController@showDoctorClosedAppointments')->name('doctor-appointments');
 
 //DoctorProfile Update
 Route::patch('/home/profile/doctor/{doctorId}', 'DoctorController@updateDoctor')->name('doctor-profile-update');

@@ -8,6 +8,9 @@
                     <div class="card-header">Appointment Details</div>
                     <div class="card-body">
                         <div>
+                            <label for="validationServer01">Appointment Date and Time</label>
+                            <input readonly type="text" class="form-control" value="{{$appointment->appointment_date.' at: '.$appointment->appointment_time}}" required>
+
                             <label for="validationServer01">Patient Name</label>
                             <input readonly type="text" class="form-control" value="{{$patientProfile->name}}" required>
 
@@ -22,12 +25,12 @@
 
                             <label for="validationServer01">Appointment created:</label>
                             <input readonly type="text" class="form-control" value="{{$appointment->created_at->diffForHumans()}}" required>
-
                         </div>
-
-                        <div class="text-center mt-2">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Prescription</button>
-                        </div>
+                        @if(!$appointment->is_closed && Auth::user()->hasRole('ROLE_DOCTOR'))
+                            <div class="text-center mt-2">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Prescription</button>
+                            </div>
+                            @endif
                     </div>
                 </div>
             </div>
@@ -59,13 +62,15 @@
                         </div>
                         <div class="form-group">
                             <label for="medicines" class="col-form-label">Medicines:</label>
-                            <select multiple="multiple" class="form-control m-bot15" id="medicines" name="medicines[]" >
+
+                            <select id="medicines" class="form-control m-bot15" name="medicines[]" multiple="multiple">
                                 @if ($medicines->count())
                                     @foreach($medicines ?? '' as $medicine)
                                         <option value="{{$medicine->id}}">{{$medicine->name}}</option>
                                     @endforeach
                                 @endif
                             </select>
+
                         </div>
                         <div class="form-group">
                             <label for="description" class="col-form-label">Description:</label>
