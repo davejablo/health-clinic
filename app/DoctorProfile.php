@@ -50,6 +50,7 @@ class DoctorProfile extends Model
     public function  getDoctorOpenedAppointments($id){
         $openedAppointments = Appointment::where('doctor_profile_id', $id)
             ->where('is_closed', false)
+            ->orderBy('appointment_date', 'asc')
             ->paginate(5);
         return $openedAppointments;
     }
@@ -57,6 +58,7 @@ class DoctorProfile extends Model
     public function  getDoctorClosedAppointments($id){
         $closedAppointments = Appointment::where('doctor_profile_id', $id)
             ->where('is_closed', true)
+            ->orderBy('appointment_date', 'asc')
             ->paginate(5);
         return $closedAppointments;
     }

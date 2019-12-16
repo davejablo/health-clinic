@@ -66,7 +66,7 @@
 
                 <div class="row justify-content-center m-2 pb-3">
                     <div class="justify-content-center">
-                        <a class="btn btn-success" href="/home/doctors">Show all specializations</a>
+                        <a class="btn btn-outline-success" href="/home/doctors">Show all specializations</a>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 @endif
         <div class="card">
             <div class="card-header text-center text-info"><h1>Upcoming Appointments</h1></div>
-        @if($myAppointments ?? '')
+        @if($myAppointments->count())
                     @foreach($myAppointments ?? '' as $myAppointment)
                         <div class="list-group m-2 pt-2">
                             <a href="{{url('/home/profile/doctor/appointments/'.$myAppointment->id)}}" class="list-group-item list-group-item-action active">
@@ -99,7 +99,7 @@
                     @endforeach
                         <div class="row justify-content-center m-2 pb-3">
                             <div class="justify-content-center">
-                                <a class="btn btn-secondary" href="{{route('doctor-appointments')}}">Show closed appointments</a>
+                                <a class="btn btn-outline-secondary" href="{{route('doctor-appointments')}}">Show closed appointments</a>
                             </div>
                         </div>
                         <div class="row">
@@ -108,9 +108,14 @@
                             </div>
                         </div>
                 @else
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-warning m-3" role="alert">
                         There are no upcoming appointments.
                     </div>
+                <div class="row justify-content-center m-2 pb-3">
+                    <div class="justify-content-center">
+                        <a class="btn btn-outline-secondary" href="{{route('doctor-appointments')}}">Show closed appointments</a>
+                    </div>
+                </div>
         </div>
         @endif
 

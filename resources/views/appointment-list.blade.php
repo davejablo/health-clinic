@@ -2,9 +2,15 @@
 
 @section('content')
     <div class="container">
+        @if(Session::has('message'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{ Session::get('message') }}
+            </div>
+        @endif
         <div class="card">
             <div class="card-header text-center text-info"><h1>Closed Appointments</h1></div>
-            @if($closedAppointments ?? '')
+            @if($closedAppointments->count())
                 @foreach($closedAppointments ?? '' as $closedAppointment)
                     <div class="list-group m-2 pt-2">
                         @if(Auth::user()->hasRole('ROLE_DOCTOR'))
@@ -33,7 +39,7 @@
                     </div>
                 </div>
             @else
-                <div class="alert alert-warning" role="alert">
+                <div class="alert alert-warning m-3" role="alert">
                     There are no closed appointments.
                 </div>
                 @endif

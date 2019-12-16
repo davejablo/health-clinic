@@ -50,7 +50,6 @@ class PatientController extends Controller
             'pesel'=> '',
             'locality'=> '',
             'street'=> '',
-            'gender'=> 'required',
             'birthDate'=> 'required',
             'image' => '',
         ]);
