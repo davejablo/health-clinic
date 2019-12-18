@@ -21,7 +21,6 @@ class PrescriptionController extends Controller
             'description' => 'required',
             'appointment_id' => 'required'
         ]);
-        dd($data);
 
         $appointment = Appointment::all()
             ->where('id', $data['appointment_id'])->first();
@@ -31,7 +30,9 @@ class PrescriptionController extends Controller
             'appointment_id' => $data['appointment_id']
         ]);
 
-        $prescription->medicines()->attach($data['medicines']);
+        foreach ($data['medicines'] as $medicine){
+            $prescription->medicines()->attach($medicine);
+        }
 
         $sample = array(
             'appointment_id' => $data['appointment_id'],
@@ -42,6 +43,6 @@ class PrescriptionController extends Controller
         $appointment->update($sample);
 //        $appointment->prescription()->save($prescription);
 
-        return redirect(route('doctor-appointments'))->with('message', 'Prescription created successful without errors');
+        return redirect(route('doctor-appointments'))->with('message', 'Prescription created successfully without errors');
     }
 }

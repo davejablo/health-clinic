@@ -34,7 +34,7 @@ class NewUserWelcomeMail extends Mailable
     public function build()
     {
         return $this
-            ->from('etrainer.proo@gmail.com', 'Health-Clinic')
+            ->from('health.clinic.pro@gmail.com', 'Health-Clinic')
             ->subject('Health-Clinic Registration')
             ->markdown('emails.welcome-email', ['login' => $this->login, 'name' => $this->name]);
     }

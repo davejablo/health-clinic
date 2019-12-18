@@ -61,8 +61,18 @@ class AppointmentController extends Controller
             'symptom' => 'required',
         ]);
 
-        Appointment::create($data);
-        return Redirect::route('doctor-list')->with('message', 'Your appointment is succesfully scheduled on '.Carbon::parse($data['appointment_date'])->format('d-m-Y').' at '.$data['appointment_time']);
+        $appointmentToInsert = Appointment::where('appointment_date', $data['appointment_date'])
+            ->where('appointment_time', $data['appointment_time'])
+            ->where('doctor_profile_id', $data['doctor_profile_id'])
+            ->get();
+
+        if (($appointmentToInsert->isEmpty()))
+        {
+            Appointment::create($data);
+            return Redirect::route('doctor-list')->with('message', 'Your appointment is succesfully scheduled on '.Carbon::parse($data['appointment_date'])->format('d-m-Y').' at '.$data['appointment_time']);
+        }
+        else
+            return Redirect::route('doctor-list')->with('message', 'This appointment already exist');
     }
 
     public function showAppointmentDetail($appointment_id){

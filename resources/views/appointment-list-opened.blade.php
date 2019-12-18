@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header text-center text-info"><h1>Closed Appointments</h1></div>
-            @if($openedAppointments ?? '')
+            <div class="card-header text-center text-info"><h1>My upcoming appointments</h1></div>
+            @if($openedAppointments->count())
                 @foreach($openedAppointments ?? '' as $openedAppointment)
                     <div class="list-group m-2 pt-2">
                         @if(Auth::user()->hasRole('ROLE_DOCTOR'))
@@ -33,8 +33,8 @@
                     </div>
                 </div>
             @else
-                <div class="alert alert-warning" role="alert">
-                    There are no closed appointments.
+                <div class="alert alert-warning m-2" role="alert">
+                    You have no opened appointments.
                 </div>
             @endif
         </div>

@@ -5,30 +5,45 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Appointment Details</div>
+                    <div class="card-header text-center text-info"><h2>Appointment details</h2></div>
                     <div class="card-body">
                         <div>
-                            <label for="validationServer01">Appointment Date and Time</label>
-                            <input readonly type="text" class="form-control" value="{{$appointment->appointment_date.' at: '.$appointment->appointment_time}}" required>
+                            <div class="alert alert-info" role="alert">
+                                @if(Auth::user()->hasRole('ROLE_PATIENT'))
+                                    Assigned doctor: <a href="{{url('/home/doctors/'.$appointment->doctor_profile_id)}}" class="alert-link">Show Profile</a>
+                                @elseif(Auth::user()->hasRole('ROLE_DOCTOR'))
+                                    Assigned patient: <a href="{{url('/home/patients/'.$appointment->patient_profile_id)}}" class="alert-link">Show Profile</a>
+                                @endif
+                            </div>
+                            <div class="alert alert-primary" role="alert">
+                                <label for="validationServer01">Appointment Date and Time</label>
+                                <input readonly type="text" class="form-control" value="{{$appointment->appointment_date.' at: '.$appointment->appointment_time}}" required>
+                            </div>
 
-                            <label for="validationServer01">Patient Name</label>
-                            <input readonly type="text" class="form-control" value="{{$patientProfile->name}}" required>
+                            <div class="alert alert-success" role="alert">
+                                <label for="validationServer01">Patient Name</label>
+                                <input readonly type="text" class="form-control" value="{{$patientProfile->name}}" required>
 
-                            <label for="validationServer01">Patient Surname</label>
-                            <input readonly type="text" class="form-control" value="{{$patientProfile->surname}}" required>
+                                <label for="validationServer01">Patient Surname</label>
+                                <input readonly type="text" class="form-control" value="{{$patientProfile->surname}}" required>
 
-                            <label for="validationServer01">Patient Age</label>
-                            <input readonly type="text" class="form-control" value="{{$patientProfile->getAge()}}" required>
+                                <label for="validationServer01">Patient Age</label>
+                                <input readonly type="text" class="form-control" value="{{$patientProfile->getAge()}}" required>
+                            </div>
 
-                            <label for="exampleFormControlTextarea1">Patient disease symptoms</label>
-                            <textarea readonly class="form-control" id="exampleFormControlTextarea1" rows="3">{{$appointment->symptom}}</textarea>
+                            <div class="alert alert-danger" role="alert">
+                                <label for="exampleFormControlTextarea1">Patient disease symptoms</label>
+                                <textarea readonly class="form-control" id="exampleFormControlTextarea1" rows="3">{{$appointment->symptom}}</textarea>
+                            </div>
 
-                            <label for="validationServer01">Appointment created:</label>
-                            <input readonly type="text" class="form-control" value="{{$appointment->created_at->diffForHumans()}}" required>
+                            <div class="alert alert-dark" role="alert">
+                                <label for="validationServer01">Appointment created:</label>
+                                <input readonly type="text" class="form-control" value="{{$appointment->created_at->diffForHumans()}}" required>
+                            </div>
                         </div>
                         @if($appointment->is_closed)
                             <div class="text-center mt-2">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Prescription Details</button>
+                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Prescription Details</button>
                             </div>
                         @endif
                     </div>
@@ -36,7 +51,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">

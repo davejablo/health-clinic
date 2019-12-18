@@ -7,10 +7,9 @@ use App\Disease;
 use App\DoctorProfile;
 use App\DoctorSpecialization;
 use Carbon\Carbon;
-use http\Message;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\Console\Input\Input;
 
@@ -60,10 +59,8 @@ class DoctorController extends Controller
             'surname'=> '',
             'email'=> '',
             'locality'=> '',
-            'specialization_id'=> '',
             'street'=> '',
             'phone'=> '',
-            'gender'=> '',
             'birthDate'=> '',
             'image' => '',
         ]);
