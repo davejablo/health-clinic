@@ -106,6 +106,7 @@
                     <div class="row justify-content-center m-2">
                         <div class="justify-content-center">
                             <a class="btn btn-outline-success m-2" href="/home/profile/doctor/{{Auth::user()->doctorProfile->id}}/edit">Edit Profile</a>
+                            <a class="btn btn-outline-primary m-2" href="{{route('patient-list')}}">Lista Pacjentów</a>
                         </div>
                     </div>
 

@@ -12,54 +12,63 @@
             <div class="card">
                 <div class="card-header text-center text-info"><h1>Our Specializations</h1></div>
                 <div class="row justify-content-center pb-3 pt-3">
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <a href="/home/doctors/specialization/1">
-                            <img src="/images/profile_placeholder.jpg" alt="No Image" class="img-fluid">
+                            <img src="/images/pediatrician.jpg" alt="No Image" class="img-fluid rounded w-100 img-thumbnail">
+                            <h5>Pediatrics</h5>
                         </a>
                     </div>
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <a href="/home/doctors/specialization/2">
-                            <img src="/images/profile_placeholder.jpg" alt="No Image" class="img-fluid">
+                            <img src="/images/dermatologist.png" alt="No Image" class="img-fluid rounded w-100 img-thumbnail">
+                            <h5>Dermatology</h5>
                         </a>
                     </div>
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <a href="/home/doctors/specialization/3">
-                            <img src="/images/profile_placeholder.jpg" alt="No Image" class="img-fluid">
+                            <img src="/images/allergologist.png" alt="No Image" class="img-fluid rounded w-100 img-thumbnail">
+                            <h5>Allergology</h5>
                         </a>
                     </div>
                 </div>
                 <div class="row justify-content-center pb-3">
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <a href="/home/doctors/specialization/4">
-                            <img src="/images/profile_placeholder.jpg" alt="No Image" class="img-fluid">
+                            <img src="/images/urologist.png" alt="No Image" class="img-fluid rounded w-100 img-thumbnail">
+                            <h5>Urology</h5>
                         </a>
                     </div>
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <a href="/home/doctors/specialization/5">
-                            <img src="/images/profile_placeholder.jpg" alt="No Image" class="img-fluid">
+                            <img src="/images/cardiologist.jpg" alt="No Image" class="img-fluid rounded w-100 img-thumbnail">
+                            <h5>Cardiology</h5>
                         </a>
                     </div>
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <a href="/home/doctors/specialization/6">
-                            <img src="/images/profile_placeholder.jpg" alt="No Image" class="img-fluid">
+                            <img src="/images/oculist.png" alt="No Image" class="img-fluid rounded w-100 img-thumbnail">
+                            <h5>Ophthalmology</h5>
                         </a>
                     </div>
                 </div>
 
                 <div class="row justify-content-center pb-3">
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <a href="/home/doctors/specialization/7">
-                            <img src="/images/profile_placeholder.jpg" alt="No Image" class="img-fluid">
+                            <img src="/images/dentist.png" alt="No Image" class="img-fluid rounded w-100 img-thumbnail">
+                            <h5>Dentistry</h5>
                         </a>
                     </div>
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <a href="/home/doctors/specialization/8">
-                            <img src="/images/profile_placeholder.jpg" alt="No Image" class="img-fluid">
+                            <img src="/images/neurologist.png" alt="No Image" class="img-fluid rounded w-100 img-thumbnail">
+                            <h5>Neurology</h5>
                         </a>
                     </div>
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <a href="/home/doctors/specialization/9">
-                            <img src="/images/profile_placeholder.jpg" alt="No Image" class="img-fluid">
+                            <img src="/images/physiotherapist.png" alt="No Image" class="img-fluid rounded w-100 img-thumbnail">
+                            <h5>Physiotherapy</h5>
                         </a>
                     </div>
                 </div>

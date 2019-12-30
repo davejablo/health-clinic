@@ -44,7 +44,7 @@
 {{--                    @endif--}}
                         @if(Auth::user()->hasRole('ROLE_DOCTOR'))
                             <ul class="navbar-nav m-auto">
-                                <li>
+                                <li class="navbar-brand">
                                     <a href="{{route('patient-list')}}">Lista pacjentów</a>
                                 </li>
                             </ul>
