@@ -21,7 +21,7 @@ class DoctorSpecializationSeeder extends Seeder
         DoctorSpecialization::create(['name' => 'Kardiolog']);
         DoctorSpecialization::create(['name' => 'Okulista']);
         DoctorSpecialization::create(['name' => 'Dentysta']);
-        DoctorSpecialization::create(['name' => 'Ginekolog']);
-        DoctorSpecialization::create(['name' => 'Seksuolog']);
+        DoctorSpecialization::create(['name' => 'Neurolog']);
+        DoctorSpecialization::create(['name' => 'Fizjoterapeuta']);
     }
 }

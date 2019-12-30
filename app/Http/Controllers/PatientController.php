@@ -25,7 +25,7 @@ class PatientController extends Controller
     }
 
     public function showPatients(){
-        $patientProfiles = PatientProfile::all();
+        $patientProfiles = PatientProfile::paginate(5);
         return view('patient-list', compact('patientProfiles'));
     }
 
