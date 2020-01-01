@@ -15,24 +15,32 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm">
-                                <div class="text-center">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Surname</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">{{$patientProfile->id}}</th>
-                                            <td>{{$patientProfile->name}}</td>
-                                            <td>{{$patientProfile->surname}}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                            <div class="col-md-5">
+                                <div class="row pt-4">
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <div class="col-xs-6 text-center">
+                                                <label for="name"><h4>Name</h4></label>
+                                                <input type="name" readonly class="form-control text-center" value="{{$patientProfile->name}}" name="name" id="name" placeholder="name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <div class="col-xs-6 text-center">
+                                                <label for="surname"><h4>Surname</h4></label>
+                                                <input type="surname" readonly class="form-control text-center" value="{{$patientProfile->surname}}" name="surname" id="surname" placeholder="surname">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <div class="col-xs-6 text-center">
+                                                <label for="locality"><h4>Locality</h4></label>
+                                                <input type="locality" readonly class="form-control text-center" value="{{$patientProfile->locality}}" name="locality" id="locality" placeholder="locality">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
