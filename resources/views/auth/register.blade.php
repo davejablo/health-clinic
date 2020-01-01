@@ -74,20 +74,6 @@
                             </div>
                         </div>
 
-{{--                        <div class="form-group row">--}}
-{{--                            <label for="birthDate" class="col-md-4 col-form-label text-md-right">{{ __('Birth date') }}</label>--}}
-
-{{--                            <div class="col-md-6">--}}
-{{--                                <input id="birthDate" type="text" class="form-control @error('birthDate') is-invalid @enderror" name="surname" value="{{ old('birthDate') }}" required autocomplete="birthDate">--}}
-
-{{--                                @error('birthDate')--}}
-{{--                                <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                @enderror--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
                         <div class="form-group row">
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
@@ -157,11 +143,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                        <div class="form-group mb-0">
+                            <div class="row justify-content-center m-2">
+                                <div class="justify-content-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Register') }}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>

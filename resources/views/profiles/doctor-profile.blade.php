@@ -106,45 +106,9 @@
                     <div class="row justify-content-center m-2">
                         <div class="justify-content-center">
                             <a class="btn btn-outline-success m-2" href="/home/profile/doctor/{{Auth::user()->doctorProfile->id}}/edit">Edit Profile</a>
-                            <a class="btn btn-outline-primary m-2" href="{{route('patient-list')}}">Lista Pacjentów</a>
+                            <a class="btn btn-outline-primary m-2" href="{{route('patient-list')}}">Patients list</a>
                         </div>
                     </div>
-
-{{--                    <div class="card-header">--}}
-{{--                        <div class="text-center text-info">--}}
-{{--                            <h1>Profile Details</h1>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body">--}}
-{{--                        <img src="{{Auth::user()->doctorProfile->profileImage()}}" class="rounded w-25 img-thumbnail float-left" alt="">--}}
-
-{{--                        <h1>Name: {{Auth::user()->doctorProfile->name}}</h1>--}}
-{{--                        <h1>Surname: {{Auth::user()->doctorProfile->surname}}</h1>--}}
-{{--                        <h1>BirthDate: {{Auth::user()->doctorProfile->getBirthDate() }}</h1>--}}
-{{--                        <h1>Age: {{Auth::user()->doctorProfile->getAge()}}</h1>--}}
-{{--                        <h1>Specialization: {{Auth::user()->doctorProfile->specialization_id ?? 'None'}}</h1>--}}
-{{--                        @switch(Auth::user()->doctorProfile->gender)--}}
-{{--                            @case(1)--}}
-{{--                            <h1>Gender: Male</h1>--}}
-{{--                            @break--}}
-{{--                            @case(0)--}}
-{{--                            <h1>Gender: Female</h1>--}}
-{{--                            @break--}}
-{{--                            @case(2)--}}
-{{--                            <h1>Gender: Other</h1>--}}
-{{--                            @break--}}
-{{--                        @endswitch--}}
-{{--                        <h1>Phone: {{Auth::user()->doctorProfile->phone}}</h1>--}}
-{{--                        <h1>Locality: {{Auth::user()->doctorProfile->locality}}</h1>--}}
-{{--                        <h1>Address: {{Auth::user()->doctorProfile->street ?? 'None'}}</h1>--}}
-
-{{--                        <div class="row justify-content-center m-2 pb-3 pt-3">--}}
-{{--                            <div class="justify-content-center">--}}
-{{--                                <a class="btn btn-outline-success m-2" href="/home/profile/doctor/{{Auth::user()->doctorProfile->id}}/edit">Edit Profile</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
                 </div>
             </div>
         </div>
